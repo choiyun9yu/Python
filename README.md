@@ -1,6 +1,8 @@
 # Python
 
 ## Conda
+- win : winget install miniconda3
+- mac : brew install miniconda?
 - 콘다시작 : conda init zsh
 - 가상환경 생성 : conda create -n[가상환경이름] python=3.
 - 가상환경 목록 조회 : conda env list
