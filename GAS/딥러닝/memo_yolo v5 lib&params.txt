@@ -1,0 +1,85 @@
+Python path library : 파일 시스템 경로를 단순한 문자열이 아니라 객체로 다루는 라이브러리
+	from parthlib import Path
+	# 파일 열기
+	path = pathlib.Path('경로')
+	file = path.open('r')
+	# 읽기
+	path = pathlib.Path('경로')
+	file = path.read_text()
+	# 쓰기
+	path = pathlib.Path('경로')
+	path.write_text('파일쓰기')
+	#경로분석
+	path = pathlib.Path('/user/path/to/file')
+	print(path)
+	print(path.parent)
+	print(list(path.parents))
+	print(path.parts)
+	# 실행한 스크립트 폴더 경로 얻기
+	path = pathlib.Path.cwd()
+	# 현재 위치한 파일/폴더 얻기
+	path = pathlib.Path('.')
+	files = path.glob('*')
+	# 현재 위치에서 존재하는 모든 파일/폴더 얻기
+	path = pathlib.Path('.')
+	files = path.glob('**/*')
+
+
+Python.sys library : 파이썬 인터프린터가 제공하는 변수와 함께 함수를 직접 제어할 수 있게 해주는 모듈
+	import sys
+	#명령 행에서 인수 전달하기 
+	sys.argv
+	# 강제로 스크립트 종료하기 
+	sys.exit
+	# 파이썬 모듈들이 저장되어 있는 위치를 나타낸다
+	sys.path
+	# 경로를 추가하기 ( 이렇게 추가해두면 방금 추가한 경로에 있는 모듈을 쓸 수 있음)
+	sys.path.append('경로') 
+
+
+Python os library :운영체제에서 제공되는 기능들을 파이썬에서 수행할 수 있게 해준는 모듈
+	import os
+	# 해당 경로에 존재하는 파일과 디렉토리 목록을 구하는 함수(디폴트: 현재경로)
+	os.listdir(path)
+	# 현재 프로세스의 작업 디레토리 얻기
+	os.getcwd()	
+	# 작업하고 있는 디렉토리 변경
+	os.chdir(path)
+	# 주어진 경로의 파일이 있는지 확인하는 함수
+	os.path.exist(filename)
+	# 현재 디렉토리 얻기
+	os.cudir()
+	# 부모 디렉토리 얻기
+	os.pardir
+	# 디렉토리 분리 문자 얻기
+	os.sep()
+	# 파일명만 추출
+	os.path.basename(filename)
+	# 디렉토리 경로 추출
+	os.path.dirname(filename)
+	# 경로와 파일명 분리
+	os.path.split(filename)
+	# 드라이브명과 나머지 분리
+	os.path.splitdrive(filename)
+	# 확장자와 나머지 분리
+	os.path.splitext(filename)
+	# 파일의 상대 경로를 절대경로로 바꾸는 함수
+	os.path.abspath(filename)
+	# 상대경로로 구하기
+	os.path.relpath()
+
+
+Python argparse library
+	import argparse
+	# 인자값을 받을 수 있는 인스턴스 생성
+	parser = argparse.ArgumentParser()
+	# 입력 받을 인자값 등록
+	parser.add_argument() 
+	# 입력 받은 인자값을 opt에 저장
+	opt = parser.parser_args()
+
+
+
+
+
+

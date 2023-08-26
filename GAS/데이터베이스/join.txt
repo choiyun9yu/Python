@@ -1,0 +1,112 @@
+(유니크한 값들 유일성 만족) 그자체만으로 고유 식별자가 됨
+슈퍼키에 뭘 같다 붙여 합체해도 하나의 행만 찾아낼 수 있으면 (슈퍼키) -> 슈퍼키 (유일성은 만족하지만 최소성은 만족하지 않는 것)
+
+슈퍼키 중 최소성을 만족 (열 중 뭐 하나를 빼면 더이상 슈퍼키가 안되는 게 최소성)-> 후보키 (각 행들을 구분할 수 있는 속성)
+!!여러 열 합쳐도 최소성만 보장되면 후보키이다.
+
+후보키중 테이블을 대표할 수 있다고 판단되는 키가 있으면 -> 기본키 / 반드시 기본키는 존재해야 함
+
+후보키중 기본키가 안된 것 -> 대체키
+
+
+
+
+기본키 특징 : U(유니크)o, NN(not null)o 
+슈퍼키 특징 : 유니크(o), NN(?) // 널값 하나만이면 고유값되니까 NN만족안함?
+후보키 : U(o), NN(o)
+대체키 : U(o), NN(o)
+외래키 : 다른 테이블의 기본키를 참 조하는 키 NN(0)
+
+
+
+
+
+   두 테이블의 정보를 함께 가져오고자할 때 기본키와 외래키를 판단할 수 있어야한다?
+   두개 속성을 기본키로 줄 수 있다 -> 복합키
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-오라클에 존재하는 조인-
+
+  1.등가조인(대부분) : 서로 다른 테이블에서 가져오려는 칼럼이 서로 매칭이 되어야한다
+		  기본키-외래키 관계에서는 등가조인이 100%가능하다.
+
+	(ex)select last_name, department_id, department_name from employees, department
+		근데 어디에서 결과값 가져올지 명시해야함
+	    select employees.last_name, employees.department_id, departments.department_name from employees, department
+		근데 너무 기니까 테이블명에 별칭 준다
+	    select e.last_name, e.deplartment_id, d.department_name from employees e, department d
+		카타시안 곱 : 조인 조건을 잘못주면 모든 데이터가 곱하기 되어서 전부 출력이 되어버린다.!!!!!!  등가 조인조건은 where절에 준다
+	    select e.last_name, e.deplartment_id, d.department_name from employees e, department d where e.department_id = d.department_id;
+		조인조건에 매칭되는 조건을 명시했으니까 셀렉 바로 뒤에 안적어도 됨
+	    select e.last_name, d.department_name from employees e, department d where e.department_id = d.department_id;
+
+	(ex2) select e.last_name, l.city from employees e, departments d, location l
+	       where e.department_id = d.department_id and d.location_id = l.location_id;   <- 테이블 거쳐서 조인하는 것
+
+	(ex3) select e.last_name, d.department_name, l.city from employees e, departments d, locations l 
+	       where e.commission_pct is not null and e.department_id = d.department_id and d.location_id = l.location_id;
+
+select e.last_name, d.department_name, l.city, c.country_name, r.region_name
+  2    2  from employees e, departments d, locations l, countries c, regions r
+  3    3  where e.department_id = d.department_id
+  4    4  and d.location_id = l.location_id
+  5    5  and l.country_id = c.country_id
+
+!!! 조인 조건은 불러오려는 컬럼 n-1개 써줘야함
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2.비등가조인
+	
+	select e.last_name, e.salary, g.grade from employees e, grades g
+	where e.salary between g.min_salary and g.max_salary;
+
+
+
+3.포괄조인=아우터 조인(라이트 아우터 조인)  (오른쪽에 플러스 붙여서)  / 왼쪽에 붙이면 레프트 아우터 조인  / 둘다쓰면 풀아우터 조인 (정처기)
+	select e.last_name, d.department_name 
+	from employees e, departments d 
+	where e.department_id = d.department_id(+)   <- 사원의 디파트먼트 아이디 데이터 값이 없으면 널값으로 채워라
+	
+	select e.last_name, d.department_name 
+	from employees e, departments d 
+	where e.department_id(+) = d.department_id   <- 사원이 없는 디파트먼트 아이디가 있으면 사원을 널값으로 뽑아라
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+4.자체조인 (같은 테이블을 다른 이름으로 별칭 저장해서 참조 하면서 조인조건 주는 방식)
+
+	select e.last_name, e.employee_id, e.hire_date, e.manager_id, m.last_name as manager_name from employees e, employees m 
+	where e.manager_id = m.employee_id;
+
+	select e.last_name, e.employee_id, e.hire_date, e.manager_id, m.last_name as manager_name from employees e, employees m 
+	where e.manager_id = m.employee_id and e.hire_date < m.hire_date;
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	카타시안 곱 -> 조인 조건을 잘못설정했을 때 데이터 하나하나가 두개 곱해져서 조회 됨.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+select *                                                      <-- from 한 거에서 다 가져오는 거니까 이렇게 해도 됨
+from (SELECT i.NAME, i.DATETIME
+      from ANIMAL_INS i, ANIMAL_OUTS o 
+      where i.ANIMAL_ID = o.ANIMAL_ID(+) 
+      and o.datetime is null
+      order by 2) 
+where rownum <= 3;
+
+
+
+
+
+
+
+
+
+
+
+
+
+

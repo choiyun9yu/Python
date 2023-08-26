@@ -1,0 +1,185 @@
+-roboflow-
+
+google search : roboflow
+
+(화면이 진행안되면 F5로 새로고침)
+
+new proejct - assign image
+
+annotate - add image
+
+generate - preprocessing(전처리) - resize - continue
+	 aumentation(이미지증식) - add augmentation step - continue
+	 generate(무료버전에서는 트레인 데이터 기준 최대 3배까지만 가능)
+
+versions - export - yolov5 pytorch, show download code - continue - _terminal 
+(curl -L "https://app.roboflow.com/ds/T3VPsr5dIo?key=gwVAuCCgwE" > roboflow.zip; unzip roboflow.zip; rm roboflow.zip) <- 코랩에서 실행시키면 이미지 가져올 수 있음
+
+
+----------------------------------------------------------------colab----------------------------------------------------------------
+!curl -L "https://app.roboflow.com/ds/T3VPsr5dIo?key=gwVAuCCgwE" > roboflow.zip; unzip roboflow.zip; rm roboflow.zip <- 맨앞에 느낌표 붙이고 실행(느낌표는 리눅스 용어라고 알려주는 표시임)
+
+구글드라이브에 test, train, vlid 폴더 있음 각각의 폴더안에 images, labels, 있음
+
+labes 폴더의 txt 파일을 열면
+맨 첫번째 숫자: class 
+그다음 4개 숫자 : 객체의 좌표 (0~1사이의 숫자로) 좌상단x, 좌상단y, 우하단x, 우하단y값
+(이미지의 크기가 400x400이면 각각의 좌표를 400으로 나눠주면 0~1사이 숫자로 나오게 되는 것)
+
+%pwd # print working directory (현재 사용하고 있는 디렉토리 알려줘)
+
+!git clone https://github.com/ultralytics/yolov5 #그 깃허브에 있는 내용 전부다 가지고오는 코드
+- train.py : 학습할 때 사용할 파이썬 파일
+- detect.py : 학습시키고 나서 검출할 때 사용하는 파이썬 파일
+- requirement.txt : yolo사용하기위해 필요한 라이브러리 모여 있는 파일
+
+# yolo를 사용하는데 필요한 라이브러리 설치하기
+# change directory : cd
+%cd /content/yolov5
+!pip install -r requirements.txt
+
+%pwd # 지금은 yolov5안에 있어야함 뒤로 빠져나갈거임
+
+%cd ../  
+%pwd
+
+# 데이터셋 정리
+# make directory : mkdir
+%mkdir dataset
+# 폴더와 파일의 위치 변경
+# move : mv 앞에 적은 경로에 있는 것(들)을 -> 마지막에 적은 경로에 옮김(띄어쓰기로 구분)
+%mv ./README.dataset.txt ./README.roboflow.txt ./data.yaml train test valid /content/dataset
+
+
+# 파일 내용 보기
+# concatenate  : cat
+%cat /content/dataset/data.yaml
+
+# data.yaml    ->	train: ../train/images   # train 파일 경로, (변경해줘야함)
+				     파일의 모든 경로가 담긴 txt파일로 만들어서 그 파일 경로
+		val: ../valid/images   # val 파일 경로, (변경해줘야함)
+				  파일의 모든 경로가 담긴 txt파일로 만들어서 그 파일 경로
+		nc: 2   # number of calsses의 약자(가지고 있는 이미지들의 클래스 수)
+		names: ['cat', 'dog']   # classes names
+
+# 파일의 모든 경로가 담긴 txt파일 만들기
+from glob import glob   # 많은 파일들을 다룰때 사용하는 라이브러리
+train_img_list = glob('/content/dataset/train/images/*.jpg')  #*를 사용해서 이미지 폴더 안에 있는 확장자가.jpg인 모든 파일
+test_img_list = glob('/content/dataset/test/images/*.jpg')
+valid_img_list = glob('/content/dataset/valid/images/*.jpg')
+len(valid_img_list)
+
+# 모든 이미지 경로를 하나의 파일에 담아줌   <- data.yaml 파일에 넣어주기위해 만드는 것
+# train.txt, val.txt 파일에 각각 담아줌
+# open : 파일을 열고, w : write 쓰기모드
+with open('/content/dataset/train.txt', 'w') as f: 
+# write : txt파일에 적을거다 리스트에 있는 내용을 하나입력하고 엔터 반복하겠다
+  f.write('\n'.join(train_img_list) + '\n')  
+with open('/content/dataset/val.txt', 'w') as f:
+  f.write('\n'.join(valid_img_list) + '\n')
+
+# data.yaml 파일 불러와서 수정
+import yaml
+with open('/content/dataset/data.yaml','r') as f:  # r : 읽어만 올거야 그걸 f라고 부를게
+  data = yaml.safe_load(f)   # 데이터라는 변수안에 읽은거 담아줄게 딕셔너리 파일로 담김
+data['train'] = '/content/dataset/train.txt' # 딕셔너리니까 key값으로 접근
+data['val'] = '/content/dataset/val.txt'
+data   # 값이 바뀌었는지 확인
+
+#data변수에 담긴 걸 yaml파일에 덮어씌워주기
+with open('/content/dataset/data.yaml', 'w') as f:
+  # dump(이변수에 있는 값을, 여기에 건내준다)) : 건네주다
+  yaml.dump(data, f)
+
+# 학습 모듈이 있는 dir로 이동
+%cd /content/yolov5
+
+# 학습 모듈 실행
+!python train.py --img 416 --batch 16 --epochs 20 --data /content/dataset/data.yaml --cfg ./models/yolov5s.yaml --weights yolov5s.pt --name cat_dog_yolov5s_results
+	(코드해석)
+	!python   #파이썬 열기 
+	train.py   #파이썬 파일 실행
+	--img 416   #변환할 이미지 크기
+	--batch 16   #베치사이즈(한번에 학습할 이미지 수)
+	--epochs 20   #에포크수(학습 횟수)
+	--data /content/dataset/data.yaml   #사용할 데이터(모든 데이터 적을 수 없으니 데이터 정보 모아둔 yaml파일 씀) 
+	--cfg ./models/yolov5s.yaml   #사용할 모델 구조( x>l>n>m>s 학습시간, 성능) 
+	--weights yolov5s.pt   #사용할 가중치
+	--name cat_dog_yolov5s_results   #학습 결과를 저장하 폴더 이름
+
+# 학습에 대한 결과물은 runs라는 dir에 남아있음
+
+# 학습 결과 해석
+gpu_mem : 사용한 그래픽카드 메모리
+box_loss : 영역추정을 얼마나 잘 했는지
+obj_loss : 객체탐지를 얼마나 잘 했는지 
+*분류는 정확도, 화귀는 MSE, yolo는 이런 평가지표 사용하기 어려움 
+ -> 실제 영역과 추정한 영역 결과를 비교해서 0~1로 표시,  mAP지표 사용 높을수록 좋음 
+먼저 영역을 추정하고 그 영역안에 타겟이 있을 확률을 지정해줌. 
+mAP50 : 영역안 타겟 추측 확률이 50%이하인 것의 정확도?
+mAP50-95 : 영역 안 타겟의 추측 확률이 50~95 사이인 것들의 정확도?
+
+
+#테스트
+test_img = test_img_list[0]
+
+from IPython.display import Image
+Image(test_img)
+
+!python detect.py --weights /content/yolov5/runs/train/cat_dog_yolov5s_results/weights/best.pt --img 416 --conf 0.06 --source "{test_img}"     <-이게 실행되면 runs - detect - exp 폴더 안에 파일이 얼마나 잘나왔는지 나옴
+	(코드해석)
+	!python detect.py   # 불러올 파이썬 파일
+	--weights /content/yolov5/runs/train/cat_dog_yolov5s_results/weights/best.pt   #사용할 가중치(학습 결과 가중치가 핵심)
+	--img 416   #사용할 이미지 크기 
+	--conf 0.06   #confidence : 추정 영역 내 타겟이 있을 확률 / 컨피던스가 0.06이상인 것만 표시하겠다.
+	--source "{test_img}"   #판별하 때 사용할 이미지
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+#detect.py
+
+@smart_inference_mode()
+def run(
+.
+.
+.
+  # Write results
+  xyxy : 좌표
+  conf : 판별율
+  cls : 클래스(라벨)
+171번 줄에          print(xyxy)
+                        print(names[c])
+                        print(conf)
+
+def main(opt):
+    check_requirements(exclude=('tensorboard', 'thop'))
+    run(**vars(opt))		#우리 입맛대로 수정하려면 run함수를 수정해야함
+
+if __name__ == "__main__":
+    opt = parse_opt()		#매개변수 설정
+    main(opt)	
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+# 실행의 결과를 변수에 담아서 실행
+rs = !python detect.py --weights /content/yolov5/runs/train/cat_dog_yolov5s_results/weights/best.pt --img 416 --conf 0.06 --source "{test_img}"
+rs
+
+ >>"[tensor(31., device='cuda:0'), tensor(8., device='cuda:0'), tensor(383., device='cuda:0'), tensor(216., device='cuda:0')]",
+ >>'dog',
+ >>"tensor(0.52204, device='cuda:0')",
+
+프린트 추가한 부분이 출력된 것
+31, 383이 x좌표고 가로길이
+8, 216이 y좌표고 세로 길이
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+

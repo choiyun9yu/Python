@@ -1,0 +1,76 @@
+서브 쿼리 (서브쿼리 안쪽에 써브쿼리 쓸 수 있음.)
+
+	select last_name, salary 
+	from employees where (select salary 
+			       from employees 
+			       where last_name = 'Abel') < salary;         <- 서브쿼리는 들여쓰기 하는 편
+
+	select last_name, salary 
+	from employees 
+	where (select salary 
+	         from employees 
+	         where last_name in ('Abel')) < salary; 인쓰는게 좋은 이유는 abel이 여러명일 수 있어서.
+                                                       							        
+
+	select last_name, salary 
+	from employees 
+	where (select salary 
+	        from employees 
+	        where last_name in ('King'))  <-쓰면 King이 여러명이어서 서브쿼리가 1줄 출력안되서 오류뜸
+
+	(단일행 연산자 : 결과 1개)
+	(복수행 연산자 : 결과 1개일수도 2개이상일수도)
+
+	단일행으로 결과를 리턴시켜줌
+		all : 전칭 (모두보다 크거나 작아야함)
+		any : 특칭 (어떤 것보다 크거나 작기만 하면 됨)
+	
+	select last_name, salary from employees where salary > all(select salary from employees where last_name in ('King'));
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-조인으로
+select e.last_name, e.salary, e.department_id 
+from employees e, departments d 
+where e.department_id = d.department_id and d.department_name = 'IT';
+
+-서브쿼리로 (이게 더 빠름, 테이블 두개 조인하지 않음)
+select last_name, salary, department_id 
+from employees
+where department_id = (select department_id 
+		        from departments 
+		        where department_name in ('IT'));
+
+
+select last_name, job_id, salary from employees where salary = (select min(salary) from employees);			       
+
+
+select department_id, min(salary)    <- 그룹함수 쓰여서 조건에 그룹바이 써줘야함
+from employees 
+group by department_id 
+having min(salary) > (select min(salary) from employees where department_id = 50);
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+select employee_id, last_name, job_id 
+from employees 
+where salary < all(select salary
+	        from employees 
+	        where job_id = 'IT_PROG')	
+
+
+select employee_id, hire_date from employees where department_id = (select department_id from employees where last_name in ('Zlotkey'));
+
+!!!!!!!!!!!본인은 빼야함!!!!!!!!!!!! (이상 이하 조건일때 유의하자!)
+select last_name, employee_id, hire_date from employees where department_id  = (select department_id from employees where last_name in ('Zlotkey')) and last_name <> 'Zlotkey';
+
+
+select e.last_name, d.department_name, d.location_id from employees e, departments d where e.department_id = d.department_id and e.commission_pst is not null and 
+
+
+select e.last_name, d.department_name, d.location_id 
+from employees e, departments d where e.department_id = d.department_id 
+and e.commission_pct is null 
+and location_id = (select location_id from locations where city = 'Seattle')
+
