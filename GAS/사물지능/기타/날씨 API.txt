@@ -1,9 +1,0 @@
-날씨 api key
-035f26ce3fcad2630a71584e7dbb6613
-
-
-https://api.openweathermap.org/data/2.5/weather?q=Gwangju&appid=035f26ce3fcad2630a71584e7dbb6613
-
-
-
-https://api.openweathermap.org/data/2.5/weather?id={city id}&appid={035f26ce3fcad2630a71584e7dbb6613}

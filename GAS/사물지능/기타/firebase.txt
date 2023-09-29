@@ -1,9 +1,0 @@
-const firebaseConfig = {
-  apiKey: "AIzaSyAIUikf5mlyhtpkH2Iu1i389uBqCNMBB-s",
-  authDomain: "mt-iot-project-yun9yu.firebaseapp.com",
-  projectId: "mt-iot-project-yun9yu",
-  storageBucket: "mt-iot-project-yun9yu.appspot.com",
-  messagingSenderId: "999909320769",
-  appId: "1:999909320769:web:c9384c2671ab906f7bbec0",
-  measurementId: "G-SV44W3SH1T"
-};
