@@ -1,6 +1,30 @@
 # Python
 
-## Pyenv
+## Pyenv(for Ubuntu)
+
+    % sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
+libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
+xz-utils tk-dev
+
+    % git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+
+    % echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.profile
+    % echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.profile
+    % echo 'eval "$(pyenv init --path)"' >> ~/.profile
+    % echo 'if [ -n "$PS1" -a -n "$BASH_VERSION" ]; then source ~/.bashrc; fi' >> ~/.profile
+
+    % echo 'eval "$(pyenv init --path)"' >> ~/.zprofile
+    % echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+    % echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
+
+    % source ~/.zshrc
+
+    % git clone https://github.com/yyuu/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
+
+    % eval "$(pyenv virtualenv-init -)"
+    % source ~/.zshrc
+
+## Pyenv(for Mac)
 
     % brew install pyenv
     % brew install pyenv-virtualenv
@@ -11,6 +35,7 @@
     % echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.profile
     % echo 'eval "$(pyenv init --path)"' >> ~/.profile
     % echo 'if [ -n "$PS1" -a -n "$BASH_VERSION" ]; then source ~/.bashrc; fi' >> ~/.profile
+    
     % echo 'eval "$(pyenv init -)"' >> ~/.bashrc
     % echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
 
