@@ -24,6 +24,16 @@ xz-utils tk-dev
     % eval "$(pyenv virtualenv-init -)"
     % source ~/.zshrc
 
+    % pyenv install --list    # 설치가능한 리스트    
+    % pyenv install 3.7.13    # 파이썬 3.7.13 설치
+    % pyenv install 3.8.13    # 파이썬 3.8.13 설치
+    % pyenv versions          # 설치된 버전 리스트
+
+    % pyenv virtualenv 3.7.13 [envName]   // 가상환경 생성
+    % pyenv uninstall [envName]           // 가상환경 제거
+    % pyenv global 3.8.13                 // global 설정
+    % pyenv local [envName]               // loval 설정 (해당 경로에서)
+
 ## Pyenv(for Mac)
 
     % brew install pyenv
@@ -42,6 +52,8 @@ xz-utils tk-dev
     % echo 'eval "$(pyenv init --path)"' >> ~/.zprofile
     % echo 'eval "$(pyenv init -)"' >> ~/.zshrc
     % echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
+    
+    % source ~/.zshrc
 
     % pyenv --version
 
