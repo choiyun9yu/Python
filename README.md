@@ -1,10 +1,12 @@
 # Python
 
-## Pyenv(for Ubuntu)
+## Pyenv
+
+#### for Ubuntu
 
     % sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
-libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
-xz-utils tk-dev
+    libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
+    xz-utils tk-dev
 
     % git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 
@@ -34,7 +36,7 @@ xz-utils tk-dev
     % pyenv global 3.8.13                 // global 설정
     % pyenv local [envName]               // loval 설정 (해당 경로에서)
 
-## Pyenv(for Mac)
+#### for MacOs
 
     % brew install pyenv
     % brew install pyenv-virtualenv
