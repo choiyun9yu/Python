@@ -1,6 +1,25 @@
 # Python
 
-## Pyenv
+## 1. Virtual Environment
+### 1-1. Pipenv
+
+    % pip install pipenv    // pipenv 설치
+
+    % cd /프로젝트 루트 경로
+    % pipenv --python 3.X   // 가상환경에서 사용할 python 설정
+    % pipenv shell          // 가상환경 실행 
+    % exit                  // 가상환경 종료
+
+    % pipenv install 패키지명 // 가상환경에 패키지 설치
+    
+    % pipenv --rm           // 가상환경 제거
+
+    % pipenv lock
+    % pipenv install
+    
+### 1-2. venv
+
+### 1-3. Pyenv
 
 #### for Ubuntu
 
@@ -71,7 +90,7 @@
     % pyenv global 3.                    // Global 설정
     % pyenv local [가상환경명]              // Local 설정
     
-## Conda
+### 1-4. Conda
 
     % winget install miniconda3            // win
     % brew install miniconda?              // mac
@@ -89,7 +108,7 @@
     % conda env list                       // 가상환경 목록 조회
     % conda config --set auto_auctivate_base false    // 가상환경 자동활성화 해제
 
-## Jupyter whit vscode
+## 2. Jupyter whit vscode
 
     % conda install ipykernel (해당 가상환경에 커널 설치)
 
@@ -101,5 +120,3 @@
     vscode 터미널에서 주피터 노트북 실행 -> 주소복사 -> [cmd + shift + p]
     -> Jupyter : Specify Jupyter Server for Connections 
     -> Exist -> 주소 입력
-    
-
