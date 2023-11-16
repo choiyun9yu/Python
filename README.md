@@ -164,7 +164,7 @@ pip는 파이썬에 기본적으로 내장되어 있는 패키지 매니저이�
 
     % pipenv lock
     % pipenv install
-
+ 
 <br>
 
 ## 3. Jupyter whit vscode
