@@ -12,26 +12,24 @@ pip는 파이썬에 기본적으로 내장되어 있는 패키지 매니저이�
     % pip install -r requirements.txt  // 텍스트 파일에 있는 전체 패키지 목록을 설치
 
 <br>
-<br>
-<br>
 
 ## 2. Virtual Environment, 가상 환경
-### 1-1. Poetry
+### 2-1. Poetry
 
-#### install for Linux
+#### Install
+    % curl -sSL https://install.python-poetry.org | python3 -
+    % echo 'export PATH="/home/choiyungyu/.local/bin:$PATH"' >> ~/.zprofile
+    % . ~/.zprofile
+    % poetry --version
 
-
-#### install for macOS
-
-
-#### 가상환경 관리
+#### Virtual Env Management
     % poerty env use {파이썬경로}       // 환경변수 PATH에 잡혀 있으면 그냥 경로에 python3만 입력
     % poerty env info                // 가상환경 정보 보기
     % poerty env info -path          // 가상환경 경로 보기
     % poetry env list                // 가상환경 목록 보기
     % poerty env remove {파이썬경로}   // 가상환경 삭제
 
-#### 의존성 관리
+#### Dependency Management
     % poerty --version           // 버전 확인
     % poerty new {프로젝트명}       // 새로운 프로젝트 만들기
     
@@ -50,7 +48,7 @@ pip는 파이썬에 기본적으로 내장되어 있는 패키지 매니저이�
     % poetry publish            // PyPI에 배포
     
 
-### 1-2. Pyenv
+### 2-2. Pyenv
 #### for Ubuntu
     % sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
     libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
@@ -116,7 +114,7 @@ pip는 파이썬에 기본적으로 내장되어 있는 패키지 매니저이�
     % pyenv global 3.                    // Global 설정
     % pyenv local [가상환경명]              // Local 설정
     
-### 1-3. Conda
+### 2-3. Conda
     % winget install miniconda3            // win
     % brew install miniconda?              // mac
 
@@ -133,7 +131,7 @@ pip는 파이썬에 기본적으로 내장되어 있는 패키지 매니저이�
     % conda env list                       // 가상환경 목록 조회
     % conda config --set auto_auctivate_base false    // 가상환경 자동활성화 해제
 
-### 1-4. Pipenv
+### 2-4. Pipenv
     % pip install pipenv    // pipenv 설치
 
     % cd /프로젝트 루트 경로
@@ -148,7 +146,7 @@ pip는 파이썬에 기본적으로 내장되어 있는 패키지 매니저이�
     % pipenv lock
     % pipenv install
 
-### 1-5. venv
+### 2-5. venv
 
 <br>
 <br>
