@@ -22,28 +22,47 @@ pip는 파이썬에 기본적으로 내장되어 있는 패키지 매니저이�
     % . ~/.zprofile
     % poetry --version
 
-#### Virtual Env Management
-    % poerty env use {파이썬경로}       // 환경변수 PATH에 잡혀 있으면 그냥 경로에 python3만 입력
-    % poerty env info                // 가상환경 정보 보기
-    % poerty env info -path          // 가상환경 경로 보기
-    % poetry env list                // 가상환경 목록 보기
-    % poerty env remove {파이썬경로}   // 가상환경 삭제
+    % poetry self update 
+
+#### Virtual Env Management 
+    % poetry new {프로젝트명}         // 프로젝트 생성 
+>  poetry-demo  
+            ├── pyproject.toml  
+            ├── README.rst  
+            ├── poetry_demo  
+            │   └── __init__.py  
+            └── tests  
+            ├── __init__.py  
+            └── test_poetry_demo.py  
+
+    % poetry init                   // pyproject.toml 파일 생성
+        Package name: {패키지명}
+        Version: {이 프로젝트의 버전}
+        Description: {설명}
+        Author: {작성자}
+        License: {라이센스}
+        Compatible Python versions: >=3.9
+        Package to add or search for: {추가할 패키지}
+    
+    % poetry shell                    // Poetry 쉘 활성화
+    % exit                            // Poetry 쉘 비활성화
+
+    % poerty env info                 // 가상환경 정보 보기
+    % poetry env list                 // 가상환경 목록 보기
+    % poerty env remove {파이썬경로}    // 가상환경 삭제
 
 #### Dependency Management
-    % poerty --version           // 버전 확인
-    % poerty new {프로젝트명}       // 새로운 프로젝트 만들기
-    
-    % poerty init                // pyproject.toml 파일 생성
-    % poerty add {패키지명}        // 의존성 추가 
 
-    % poerty install             // 의존성 설치
-    % poerty install --no-deb    // 개발환경 의존성 빼고 설치
+    % poerty show                     // 의존성 보기
+    % poetry install                  // 의존성 설치
+    % poerty install --no-deb                   // 개발환경 의존성 빼고 설치
     % poerty install -E(or --extra) {패키지명}    // 추가 의존성 설치
 
-    % poetry update {패키지명}    // 패키지 업데이트
-    % poerty remove {패키지명}    // 패키지 삭제
-    % poerty show               // 의존성 보기
-    
+    % poetry add {패키지명}             // 패키지 추가 설치
+
+    % poetry update {패키지명}          // 패키지 업데이트
+    % poerty remove {패키지명}          // 패키지 삭제
+
     % poerty build              // 소스를 배포가능한 형태로 빌드
     % poetry publish            // PyPI에 배포
     
