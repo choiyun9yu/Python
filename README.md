@@ -170,7 +170,6 @@ pip는 파이썬에 기본적으로 내장되어 있는 패키지 매니저이�
 ## 3. Jupyter whit vscode
 
     % conda install ipykernel (해당 가상환경에 커널 설치)
-
     % python -m ipykernel install --user --name [가상환경이름] --display-name[가상환경이름]
 
     vscode [cmd + shift + p] - [select interpreter] - 가상 환경 선택
