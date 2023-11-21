@@ -68,6 +68,13 @@ pip는 파이썬에 기본적으로 내장되어 있는 패키지 매니저이�
     
 
 ### 2-2. Pyenv
+#### freeze
+
+    % pip install pipreqs
+    % pipreqs /절대경로                 // 필요한 것 만 딱 설치
+
+    %pip freeze > requirements.txt    // 너무 많은 것을 설치
+
 #### for Ubuntu
     % sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
     libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
