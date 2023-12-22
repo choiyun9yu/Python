@@ -65,6 +65,12 @@ pip는 파이썬에 기본적으로 내장되어 있는 패키지 매니저이�
 
     % poerty build              // 소스를 배포가능한 형태로 빌드
     % poetry publish            // PyPI에 배포
+
+#### PyCharm에서 Poetry 사용하기
+- 우측 하단 Python Interprete
+- Add Python Interpreter
+- Add Local Interpreter
+- Poetry Environment
     
 
 ### 2-2. Pyenv
