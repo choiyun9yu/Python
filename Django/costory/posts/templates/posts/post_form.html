@@ -1,0 +1,51 @@
+{% extends './base.html' %}
+{% load static  %}
+
+{% comment %}  CSS 디자인 입히기 {% endcomment %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'posts/css/post_form.css' %}">
+    {% comment %} <link rel="stylesheet" href="{% static 'posts/css/form.css' %}"> {% endcomment %}
+{% endblock css %}
+
+{% block post_header %}
+    <div class="container">
+        <h1>글쓰기</h1>
+    </div>
+{% endblock post_header %}
+
+{% comment %} Form 태그 디자인, 따로 커스텀하면 에러메시지도 따로 처리해줘야한다. {% endcomment %}
+{% block content %}
+    <form method="post">{% csrf_token %}
+        <div class="submit">
+            <input type="submit" value="작성완료">
+        </div>
+        <div class="editor">
+            <p>{{form.title}}</p>
+            {% for error in form.title.errors %}
+                <p class="error">{{error}}</p>
+            {% endfor %}
+            <p>{{form.content}}</p>
+            {% for error in form.content.errors %}
+                <p class="error">{{error}}</p>
+            {% endfor %}
+            
+        </div>
+    </form> 
+    <div class="btn_back">
+        <a href="{% url 'post-list' %}">돌아가기</a>
+    </div>
+
+{% endblock content%}
+
+{% comment %} action에 아무 url도 안적으면 현재 url, method는 get {% endcomment %}
+{% comment %} csrf, cross site request forgery(교차사이트위조검증) {% endcomment %}
+{% comment %} <form method="post">{% csrf_token %}    {% endcomment %}
+    {% comment %} .as_ul을 붙이면 ul태그처럼 보여준다. {% endcomment %}
+    {% comment %} {{form.as_ul}} {% endcomment %}
+    {% comment %} <input type="submit" value="전송"> {% endcomment %}
+{% comment %} </form> {% endcomment %}
+
+
+
+
+ 

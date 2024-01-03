@@ -1,0 +1,155 @@
+h1,h2,h3,p,a,ul,li{
+    margin: 0;
+    padding: 0;
+    font-family : 'NanumMyeongjo';
+    font-weight: 200;
+    list-style:  none;
+    text-decoration: none; 
+    outline: none;
+    color: black;
+}
+a:hover,a:active,button:hover {
+    text-decoration: none;
+}
+html{
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+}
+body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: auto;
+}
+img {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+#nav{
+    height: 60px;
+}
+#header{
+    background:#2b2a2e url(../image/header_bg.png) no-repeat left top/622px;
+}
+#content{
+    margin-bottom: 300px;
+}
+#footer{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 75px;
+    background: rgba(41, 41, 44, 0.07);
+}
+.container{
+    width: 800px;
+    margin: 0 auto;
+}
+
+.logo{
+    width: 65%;
+    min-width: 899px;
+    margin: 0 auto;
+    padding-top: 17px;
+}
+.logo img{
+    width: 88px;
+}
+.title{
+    padding: 43px 0 23px;
+    font-size: 31px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: -0.32px;
+}
+.date{
+    padding-bottom: 60px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #e38917;
+    letter-spacing: -0.32px;
+}
+.content{
+    margin-top: 60px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #d8d8d8;
+}
+.content .text{
+    font-size: 15px;
+    color: #333236;
+    line-height: 1.73;
+    letter-spacing: -0.35px;
+}
+.content .date_md{
+    padding-top: 50px;
+    text-align: right;
+    font-size: 12px;
+    font-weight: bold;
+    color: #69666d;
+    letter-spacing: -0.32px;
+}
+.btn{
+    overflow: hidden;
+    margin-top: 30px;
+}
+.right-btn{
+    float: right;
+}
+.btn_list{
+    float: left;
+}
+.btn_delete{
+    float: left;
+}
+.btn_modify{
+    margin-left: 16px;
+    float: left;
+}
+.btn_list a{
+    display: inline-block;
+    padding: 10px 19px 11px;
+    color: #e38917;
+    font-size: 15px;
+    border: 1px solid #e38917;
+}
+.btn_list a:hover{
+    color: #f2ad56;
+    transition: all .2s;
+}
+.btn_delete a{
+    display: inline-block;
+    padding: 10px 19px 11px;
+    font-size: 15px;
+    color: #69666d;
+    background: #f6f6f6;
+}
+.btn_modify a{
+    display: inline-block;
+    padding: 10px 19px 11px;
+    font-size: 15px;
+    color: #69666d;
+    background: #f6f6f6;
+}
+.btn_delete a:hover, .btn_modify a:hover{
+    color: #95929a;
+    transition: all .2s;
+}
+.footer{
+    width: 65%;
+    min-width: 899px;
+    margin: 0 auto;
+}
+.footer p{
+    text-align: right;
+    font-size: 20px;
+    line-height: 75px;
+    font-weight: 800;
+    letter-spacing: -0.85px;
+    color: #cbcbc5;
+}

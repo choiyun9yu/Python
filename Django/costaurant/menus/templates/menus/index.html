@@ -1,0 +1,49 @@
+<!-- [A] 정적 경로를 사용하기 위해서는 템플릿 태그를 이용해서 static을 load 해주어야 합니다. -->
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>코스토랑</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href={% static "menus/css/styles.css" %}> <!-- [B] 정적 경로로 변경해 주어야 합니다.-->
+    <link rel="stylesheet" type="text/css"
+    href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+</head>
+<body> 
+    <div id="header">
+        <div class="container">
+            <div class="nav">
+                <a href='http://127.0.0.1:8000/menus/'><img src={% static "menus/images/logo-color.svg" %}></a> <!-- [C] 정적 경로로 변경해 주어야 합니다.-->
+            </div>
+            <div class="header_txt">
+                <p>오늘도<b>신선한재료</b>로만든요리</p>
+                <h1><img src={% static "menus/images/header-txt.svg" %} style="width:330px; height:89px;"></h1> <!-- [D] 정적 경로로 변경해 주어야 합니다.-->
+            </div>
+        </div>
+    </div>
+    <div id="content">
+       <div class="container">
+            <div class="content_txt">
+                <h2>오늘의 메뉴</h2>
+                <p class="date-text"> July 16, 2020 </p>
+            </div>
+            <div class="food_container">
+                <div class="food">
+                  <img src={% static "menus/images/chicken.jpg" %}/> <!-- [E] 정적 경로로 변경해 주어야 합니다.-->
+                  <div class="info">
+                    <h3>코딩에 빠진 닭</h3>
+                    <p>지금까지 이런 맛은 없었다. 이것은 갈비인가 통닭인가 </p>
+                    <a href="/menus/food/chicken">메뉴 보기</a>
+                </div>
+           </div>
+       </div>
+    </div>
+    <div id="footer">
+        <div class="container">
+            <div class="footer">
+                <img src={% static "menus/images/logo-gray.svg" %}> <!-- [F] 정적 경로로 변경해 주어야 합니다.-->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

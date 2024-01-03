@@ -1,0 +1,48 @@
+{% extends './base.html' %}
+
+{% block content %}
+        <div class="wrap-post">
+            <form method="post">{% csrf_token %}
+                <div class="editor">
+        
+                    <div class="input input-date">
+                        <p>날짜</p>
+                        {{form.dt_created}}
+                    </div>
+
+                    <div class="input input-score">
+                        <p>감정 점수</p>
+                        {{form.score}}
+                        {% for error in form.score.errors %}
+                            <span>{{error}}</span>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="input input-title">
+                        <p>제목</p>
+                        {{form.title}}
+                        {% for error in form.title.errors %}
+                            <span>{{error}}</span>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="input input-state">
+                        <p>상태</p>
+                        {{form.feeling}}
+                        {% for error in form.feeling.errors %}
+                            <span>{{error}}</span>
+                        {% endfor %}
+                    </div>
+                        {{form.content}}
+                        {% for error in form.content.errors %}
+                            <span>{{error}}</span>
+                        {% endfor %}
+                </div>
+                
+                <div class="post-btn">
+                    <input type="submit" value="작성완료">
+                </div>
+        
+            </form>
+        </div>
+{% endblock content %}

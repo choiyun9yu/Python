@@ -1,0 +1,22 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block date-block %}
+  {% comment %} <div>12 Aug, 2020</div> {% endcomment %}
+  <div>{{date}}</div>
+{% endblock date-block %}
+
+{% block food-container  %}
+
+  {% for menu in menus %}
+    <div class="food">
+      <img src={% get_static_prefix %}{{menu.img_path}} 'foods/images/chicken.jpg' width="300px" height="200px"/>
+      <div class="info">
+        <h3>{{menu.name}}</h3>
+        <P>{{menu.description}}</p>
+        <a href="{{menu.id}}">메뉴 보기</a> {% comment %} menu.id로 가기 위해서 경로 이렇게 잡음 {% endcomment %}
+      </div>
+    </div>
+  {% endfor %}
+
+{% endblock food-container  %}

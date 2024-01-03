@@ -1,0 +1,22 @@
+{% extends './base.html' %}
+{% load static%}
+
+{% block content %}
+<div class="wrap-delete">
+    <div class="delete-box">
+        <div class="note-info">
+            <p>&#123;</p>
+            <span class="note-date">{{page.dt_created}}</span>
+            <span class="note-title">{{page.title}}</span>
+            <p>&#125;</p>
+        </div>
+        <p>이 하루를 지울까요?</p>
+        <form method='post'>{% csrf_token %}
+            <ul>
+                <li><input type="submit" value="지우기"></li>
+                <li><a href="{% url 'page-detail' page.id %}">남기기</a></li>
+            </ul>
+        </form>
+    </div>
+</div>
+{% endblock content %}

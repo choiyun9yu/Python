@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Mind Note</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'diary/css/styles.css' %}">
+        <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumBarunpen.woff">
+    </head>
+    <body>
+        <div class="menu">
+            <h1><a href={% url 'page-list' %}><img src="{% static 'diary/image/logo02.svg' %}"></a></h1>
+            <ul>
+                <li><a href={% url 'page-list' %}>모아보기</a></li>
+                <li><a href={% url 'info' %}>감정일기란</a></li>
+                <li><a href={% url 'page-create' %}>일기쓰기</a></li>
+            </ul>
+        </div>
+
+        {% block content %}
+        {% endblock content %}s
+
+    </body>
+</html>
+
+{% comment %} <!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            {% block title_container %}
+            {% endblock title_container %}
+        </title>
+    </head>
+
+    <body>
+        {% block post_container %}
+        {% endblock post_container %}
+    </bdoy>
+</html> {% endcomment %}

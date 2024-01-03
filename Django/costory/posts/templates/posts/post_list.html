@@ -1,0 +1,94 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'posts/css/post_list.css' %}">
+{% endblock css %}
+
+{% block logo_text %}
+    <div id="header">
+        <div class="container">
+            <h1><img src="{% static 'posts/images/headertxt.png' %}"></h1>
+        </div>
+    </div>
+{% endblock logo_text %}
+
+
+{% block content %}
+    <div class="btn_post">
+        <a href={% url 'post-create' %}>글쓰기</a>
+    </div>
+
+    {% comment %} 모든 posts 였던 것을 전달받은 page에 있는 posts로 수정 {% endcomment %}
+    {% comment %} {% if page.object_list %} {% endcomment %}
+    {% comment %} 제네릭은 page가 아니라 pageobject로 전달한다. 그래서 page를 모두 pageobject로 바꿔야한다. {% endcomment %}
+    {% if page_obj.object_list %}
+    {% comment %} 게시글이 있을 때 {% endcomment %}
+        <div class="post_container">
+            {% for post in page_obj.object_list %}
+                <div class="post">
+                    <a href={% url 'post-detail' post.id %}>         
+                        <h2 class="title">{{post.title}}</h2>
+                        <p class="date">{{post.dt_created}}</p>
+                        <p class="text">{{post.content|slice:":100"}}</p>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+        {% comment %} 각각의 페이지로 이동할 수 있게 하는 부분 {% endcomment %}
+        <div class="paginator">
+            {% comment %} 이전페이지가 있다면 이전 버튼 활성화 {% endcomment %}
+            {% if page_obj.has_previous %}
+                <a href="?page=1" class="first">first</a>    
+                <a href="?page={{ page_obj.previous_page_number }}" class="prev">prev</a>
+                {% comment %} 현재 몇번째 페이지에 있는지 표시 {% endcomment %}
+            {% endif %}
+                <span>
+                    <p>{{page_obj.number}} of {{page_obj.paginator.num_pages}}</p>   
+                </span>
+            {% if page_obj.has_next %}
+                <a href="?page={{page_obj.next_page_number}}" class="next">next</a>
+                <a href="?page={{page_obj.paginator.num_pages}}" class="last">last</a>
+            {% endif %} 
+        </div>
+    {% else %}
+    {% comment %} 게시글이 없을 때 {% endcomment %}
+        <div class="blank">
+            <p>보여줄 글이 없어요. <br>
+                첫 글을 작성해보면 어떨까요?</p>
+        </div>
+    {% endif %}
+
+
+{% endblock content %}
+
+{% comment %} {%extends './base.html' %}
+{% load static %}
+
+{% block title_container%}
+    Costory :: 코스토리
+{% endblock title_container%}
+
+{% block post_container %}
+    <h3>글 목록 페이지에요</h3>
+    <table>
+        <tr>
+            <td>제목</td>
+            <td>작성일</td>
+            <td>수정일</td>
+        </tr>
+        {% for post in posts %}
+            <tr>
+                <td>
+                    <a href={% url 'post-detail' post.id %}>{{post.title}}</a>
+                </td>
+                <td>
+                    {{post.dt_created}}
+                </td>
+                <td>
+                    {{post.dt_modified}}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock post_container %} {% endcomment %}

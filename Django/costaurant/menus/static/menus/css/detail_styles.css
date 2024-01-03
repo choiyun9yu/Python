@@ -1,0 +1,127 @@
+h1,h2,h3,h4,p,a,ul,li{
+    margin: 0;
+    padding: 0;
+    font-family : 'NanumSquare', sans-serif;
+    font-weight: 200;
+    list-style:  none;
+    text-decoration: none; 
+    outline: none;
+}
+a:hover,a:active {
+    text-decoration: none;
+}
+b{
+    font-weight: 900;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+}
+img {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+#header,#content,#footer{
+    min-width: 1280px;  
+}
+#content{
+    height: 100%;
+    background: url(../images/bg-img-mashroom.jpg) no-repeat left top/92px 169px;
+}
+#footer{
+    background: url(../images/bg-rectangle.svg) no-repeat right bottom/1456px;
+    margin-top:300px;
+}
+.container{
+    position: relative;
+    width: 1450px;
+    margin: 0 auto;
+}
+.nav{
+    height: 60px;
+    padding-top: 17px;
+    box-sizing: border-box;
+}
+.header{
+    padding-left: 296px;
+}
+.header h2{
+    margin-top: 202px;
+    margin-bottom: 58px;
+    padding-left: 8px;
+}
+.menu_img{
+    position: absolute;
+    top: -262px;
+    right: 0;
+    z-index: -1;
+}
+.menu_img img{
+    width: 670px;
+    height: 800px;
+    object-fit: cover;
+    object-position: center;
+}
+.menu_info{
+    background: #D71414;
+    display: inline-block;
+    width: 660px;
+    color: #fff;
+    padding: 39px 0 40px 42px;
+    box-sizing: border-box;
+}
+.menu_info h3{
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+}
+.menu_info h4{
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+    color: #f0afaf;
+    padding: 10px 0 33px;
+}
+.menu_info .menu-desc{
+    font-size: 18px;
+    padding-bottom: 40px;
+}
+.menu_info .price{
+    font-size: 22px;
+    font-weight: 500;
+}
+.back-main{
+    margin: 134px 0 0 355px;
+}
+.back-main a{
+    position: relative;
+    display: inline-block;
+    font-size: 19px;
+    font-weight: 500;
+    color: #69666d;
+    transition: 0.2s all;
+}
+.back-main a:after{
+    content: "";
+    position: absolute;
+    display: block;
+    width: 70px;
+    height: 25px;
+    background: url(../images/back.svg) no-repeat;
+    top: 2px;
+    left: -50px;
+    transition: 0.2s all;
+}
+.back-main a:hover{
+    color: #333236;
+}
+.back-main a:hover:after{
+    left: -55px;
+}
+.footer{
+    text-align: right;
+    padding: 36px 100px 36px 0;
+}
+

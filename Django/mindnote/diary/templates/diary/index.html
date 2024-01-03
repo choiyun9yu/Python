@@ -1,0 +1,18 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Mind Note</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'diary/css/styles.css'%}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+</head>
+<body>
+    <div class="wrap-intro">
+        <h1><img src="{% static 'diary/image/logo01.svg' %}"></h1>
+        <p>사람들은 익숙한 것에 끌립니다.<br>긍정적인 감정 습관을 기르고 행복에 익숙해지세요.</p>
+        <a href="{% url 'page-list' %}">click to enter</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>코스토랑</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href={% static 'foods/css/styles_detail.css' %}>
+</head>
+<body>
+    <div class="food-detail">
+        <h2> {{menu.name}} </h2>
+        <div>{{menu.description}}</div>
+        <p>{{menu.price}}원</p>
+        <img src={% get_static_prefix %}{{menu.img_path}}>
+        <a href="/foods/menu/">돌아가기</a>
+    </div>    
+</body>
+</html>
+

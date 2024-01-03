@@ -1,0 +1,75 @@
+{% extends './base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+
+{% if page_obj.object_list %}
+    <div class="wrap-note">
+        <div class="note">         
+            <div class="note-list">
+                <ul>
+                    {% for page in page_obj.object_list %}
+                    <li>
+                        <a href="{% url 'page-detail' page.id %}">
+                            <div class="date">
+                                <span>{{page.dt_created}}</span>
+                            </div>
+                            <h2>{{page.title}}</h2>
+                            <div class="score">
+                                <p>감정점수</p>
+                                <span>{{page.score}}점</span>
+                            </div>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="paging">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1" class="first">처음</a>    
+                    <a href="?page={{ page_obj.previous_page_number }}" class="prev">이전</a>
+                {% endif %}
+                <span class="page">
+                    <p>{{page_obj.number}} of {{page_obj.paginator.num_pages}}</p>   
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="?page={{page_obj.next_page_number}}" class="next">다음</a>
+                    <a href="?page={{page_obj.paginator.num_pages}}" class="last">마지막</a>
+                {% endif %}
+        </div>
+        </div>
+    </div>
+{% else %}
+    <div class="wrap-default">
+        <div class="default">
+            <div class="default-box">
+                <p>"오늘 하루는 어땠나요? 당신의 하루를 들려주세요"</p>
+                <a href="일기 작성 페이지로 이동하는 링크">일기쓰기</a>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+
+{% endblock content %}
+
+{% comment %} {% block post_container %}
+    <h2>일기 목록 페이지</h2>
+    <ul>
+        {% for page in pages %}
+            <li>
+                <div class="date">
+                    <span>{{page.dt_created|date:"d"}}</span>
+                                <p>{{page.dt_created|date:"M"}}</p>
+                </div>
+                <h2><a href={% url 'page-detail' page.id %} page.id>{{page.title}}</a></h2>
+                <div class="score">
+                    <p>{{page.feeling}}</p>
+                    <span>{{page.score}}점</span>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock post_container %} {% endcomment %}

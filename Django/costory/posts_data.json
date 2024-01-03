@@ -1,0 +1,34 @@
+[
+{
+  "model": "posts.post",
+  "pk": 8,
+  "fields": {
+    "title": "title_data_01",
+    "content": "content_data_01",
+    "dt_created": "2023-08-21T05:29:22.721Z",
+    "dt_modified": "2023-08-21T05:29:22.721Z"
+  }
+},
+
+{
+  "model": "posts.post",
+  "pk": 9,
+  "fields": {
+    "title": "title_data_02",
+    "content": "content_data_02",
+    "dt_created": "2023-08-21T07:29:22.721Z",
+    "dt_modified": "2023-08-21T07:29:22.721Z"
+  }
+},
+
+{
+  "model": "posts.post",
+  "pk": 10,
+  "fields": {
+    "title": "title_data_03",
+    "content": "content_data_03",
+    "dt_created": "2023-08-21T08:29:22.721Z",
+    "dt_modified": "2023-08-21T8:29:22.721Z"
+  }
+}
+]

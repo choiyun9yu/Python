@@ -1,0 +1,67 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="wrap-notetext">
+        <div class="notetext">
+            <div class="text-box">
+                <h2>{{page.title}}</h2>
+                <div class="state">
+                    <p>감정 상태</p>
+                    <span>{{page.feeling}}</span>
+                </div>
+                <div class="score">
+                    <p>감정 점수</p>
+                    <span>{{page.score}}점</span>
+                </div> 
+                <div class="date">
+                <span>{{page.dt_created}}</span>
+                </div>
+                <div class="detail">{{page.content|linebreaksbr}}</div>
+                <div class="notetext-btn">
+                    <ul>
+                        <li><a href="{% url 'page-delete' page.id %}">삭제하기</a></li>
+                        <li><a href="{% url 'page-update' page.id %}">수정하기</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% comment %} {% extends './base.html' %}
+{% load static %}
+
+{% block title_container %}
+    Mind Note :: 일기장
+{% endblock title_container %}
+
+{% block post_container %}
+    <div class="notetext">
+        <div class="text-box">
+            <h2>{{page.title}}</h2>
+            <div class="state">
+                <p>감정 상태</p>
+                <span>{{page.feeling}}</span>
+            </div>
+            <div class="score">
+                <p>감정 점수</p>
+                <span>{{page.score}}점</span>
+            </div> 
+            <div class="date">
+                <span> {{post.dt_created|date:"d"}} </span>
+                <div class="month-year">
+                    <p class="month">{{page.dt_created|date:"M"}}</p>
+                    <p class="year">{{page.dt_created|date:"Y"}}</p>
+                </div>
+            </div>
+            <div class="detail">{{page.content|linebreaksbr}}</div>
+            <div class="notetext-btn">
+                <ul>
+                    <li><a href="page_list">삭제하기</a></li>
+                    <li><a href="page_list">수정하기</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock post_container %} {% endcomment %}

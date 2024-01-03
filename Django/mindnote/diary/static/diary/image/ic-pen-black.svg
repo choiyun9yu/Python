@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20">
+    <g fill="none" fill-rule="evenodd">
+        <g stroke="#1E1C1C" stroke-width="1.5">
+            <g>
+                <g>
+                    <path d="M10.5 3L16 8.53 16 21 5 21 5 8.53z" transform="translate(-50 -595) translate(-21) translate(69 595) rotate(-135 10.5 12)"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

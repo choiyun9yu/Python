@@ -1,0 +1,149 @@
+h1,h2,h3,p,a,ul,li{
+    margin: 0;
+    padding: 0;
+    font-family : 'NanumMyeongjo';
+    font-weight: 200;
+    list-style:  none;
+    text-decoration: none; 
+    outline: none;
+    color: black;
+}
+a:hover,a:active,button:hover {
+    text-decoration: none;
+}
+html{
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+}
+body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #2b2a2e;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: auto;
+}
+img {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+#nav{
+    height: 60px;
+}
+#header{
+    margin: 20px 0 20px;
+}
+#content{
+    margin-bottom: 300px;
+}
+#footer{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 75px;
+    background: rgba(41, 41, 44, 0.7);
+}
+.container{
+    width: 800px;
+    margin: 0 auto;
+}
+
+.logo{
+    width: 65%;
+    min-width: 899px;
+    margin: 0 auto;
+    padding-top: 17px;
+}
+.logo img{
+    width: 88px;
+}
+h1{
+    text-align: center;
+    font-size: 32px;
+    letter-spacing: -2px;
+    color: #fff;
+}
+.submit{
+    margin-bottom: 27px;
+    text-align: right;
+}
+input[type="submit"]{
+    padding: 10px 43px 11px 19px; 
+    font-size: 15px;
+    font-family : 'NanumMyeongjo';
+    color: #fff;
+    border: 1px solid #5b595f;
+    border-radius: 1px;
+    letter-spacing: -0.35px;
+    background: url(../image/pen.svg)no-repeat 89px 11px/16px;
+    cursor: pointer;
+}
+input[type="submit"]:hover{
+    color: #ccc;
+    transition: all 0.2s;
+}
+.editor{
+    background: #f9f9f9;
+}
+input[type="text"]{
+    display: block;
+    width: 100%;
+    padding: 35px 33px 0 30px;
+    border: none;
+    font-size: 19px;
+    font-family : 'NanumMyeongjo';
+    background-color: transparent;
+    box-sizing: border-box;
+}
+textarea{
+    width: 100%;
+    height: 500px;
+    padding: 33px 33px 30px 30px;
+    border: none;
+    font-size: 15px;
+    line-height: 1.73;
+    font-family : 'NanumMyeongjo';
+    background-color: transparent;
+    resize: none;
+    box-sizing: border-box;
+}
+textarea,input:focus{
+    outline: none;
+}
+textarea::placeholder{
+    color: #a9abb7;
+    letter-spacing: -0.44px;
+}
+input::placeholder{
+    color: #a9abb7;
+    letter-spacing: -0.44px;
+}
+.btn_back a{
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 19px 11px;
+    color: #e38917;
+    font-size: 15px;
+    border: 1px solid #e38917;
+}
+.btn_back a:hover{
+    color: #f2ad56;
+    transition: all .2s;
+}
+.footer{
+    width: 65%;
+    min-width: 899px;
+    margin: 0 auto;
+}
+.footer p{
+    text-align: right;
+    font-size: 20px;
+    line-height: 75px;
+    font-weight: 800;
+    letter-spacing: -0.85px;
+    color: #53534f;
+}

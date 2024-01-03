@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>코스토랑</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'menus/css/detail_styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <div class="nav">
+                <a href="./codeit.png"> <!--[B] 메뉴 화면으로 돌아가는 URL은 무엇일까요?-->
+                    <img src="{% static 'menus/images/logo-color.svg' %}">
+                </a> 
+        </div>
+    </div>
+    <div id="content">
+        <div class="container">
+            <div class="header">
+                <h2>
+                    <img src="{% static 'menus/images/menu-txt.svg' %}">
+                </h2>
+                <div class="menu_img">
+                    <img src="{% static 'menus/images/chicken.jpg' %}">
+                </div>
+                <div class="menu_info">
+                    <h3>{{name}}</h3>
+                    <h4>Crispy, Juicy chicken with Soy sauce</h4>
+                    <p class="menu-desc">{{description}}</p>
+                    <p class="price">&#8361;{{price}}원</p>
+                </div>
+                <div class="back-main">
+                    <a href="/menus/">돌아가기</a> <!--[C] 메뉴 화면으로 돌아가는 URL 입니다.-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="container">
+            <div class="footer">
+                <img src={% get_static_prefix %}{{img_path}}>
+            </div>
+        </div>
+    </div>
+</body>
