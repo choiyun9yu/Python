@@ -18,7 +18,7 @@ pip는 파이썬에 기본적으로 내장되어 있는 패키지 매니저이�
 
 #### Install
     % curl -sSL https://install.python-poetry.org | python3 -
-    % echo 'export PATH="/home/choiyungyu/.local/bin:$PATH"' >> ~/.zprofile
+    % echo 'export PATH="/home/{사용자이름}/.local/bin:$PATH"' >> ~/.zprofile
     % . ~/.zprofile
     % poetry --version
 
