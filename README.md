@@ -51,7 +51,7 @@ pip는 파이썬에 기본적으로 내장되어 있는 패키지 매니저이�
     % poetry env list                 // 가상환경 목록 보기
     % poerty env remove {파이썬경로}    // 가상환경 삭제
 
-#### Dependency Management
+#### Dependency Management 
 
     % poerty show                     // 의존성 보기
     % poetry install                  // 의존성 설치
