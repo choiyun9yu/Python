@@ -59,10 +59,11 @@ pip는 파이썬에 기본적으로 내장되어 있는 패키지 매니저이�
     % poetry publish            // PyPI에 배포
 
 #### PyCharm에서 Poetry 사용하기
-- 우측 하단 Python Interprete
-- Add Python Interpreter
-- Add Local Interpreter
-- Poetry Environment
+    % poetry install
+        PyCharm 열기- 메뉴에서 "File" > "Settings" 선택
+        왼쪽 탐색 창에서 "Project: [프로젝트 이름]" 선택 - "Python Interpreter" 선택 - "Add Interpreter" 선택
+        "Poetry Environment"를 선택하고, 프로젝트 디렉토리에 있는 Poetry 가상환경을 선택
+        (보통은 ~/.cache/pypoetry/virtualenvs/프로젝트이름-랜덤문자열/bin/python3.10)
 
 #### 기존 프로젝트 안에 가상환경 추가하기
     % poetry init                   // pyproject.toml 파일 생성
