@@ -34,15 +34,6 @@ pip는 파이썬에 기본적으로 내장되어 있는 패키지 매니저이�
             └── tests  
             ├── __init__.py  
             └── test_poetry_demo.py  
-
-    % poetry init                   // pyproject.toml 파일 생성
-        Package name: {패키지명}
-        Version: {이 프로젝트의 버전}
-        Description: {설명}
-        Author: {작성자}
-        License: {라이센스}
-        Compatible Python versions: >=3.9
-        Package to add or search for: {추가할 패키지}
     
     % poetry shell                    // Poetry 쉘 활성화
     % exit                            // Poetry 쉘 비활성화
@@ -71,7 +62,16 @@ pip는 파이썬에 기본적으로 내장되어 있는 패키지 매니저이�
 - Add Python Interpreter
 - Add Local Interpreter
 - Poetry Environment
-    
+
+#### 기존 프로젝트 안에 가상환경 추가하기
+    % poetry init                   // pyproject.toml 파일 생성
+        Package name: {패키지명}
+        Version: {이 프로젝트의 버전}
+        Description: {설명}
+        Author: {작성자}
+        License: {라이센스}
+        Compatible Python versions: >=3.9
+        Package to add or search for: {추가할 패키지}
 
 ### 2-2. Pyenv
 #### freeze
