@@ -75,6 +75,10 @@ pip는 파이썬에 기본적으로 내장되어 있는 패키지 매니저이�
         Compatible Python versions: >=3.9
         Package to add or search for: {추가할 패키지}
 
+#### 가상환경 
+    % pip install ipykernel
+    % python -m ipykernel install --user --name 가상환경이름 --display-name 가상환경이름
+
 ### 2-2. Pyenv
 #### freeze
 
