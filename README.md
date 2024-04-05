@@ -55,6 +55,8 @@ pip는 파이썬에 기본적으로 내장되어 있는 패키지 매니저이�
     % poetry update {패키지명}          // 패키지 업데이트
     % poerty remove {패키지명}          // 패키지 삭제
 
+    % poetry export -f requirements.txt > requirements.txt    // requirements.txt 추출 
+
     % poerty build              // 소스를 배포가능한 형태로 빌드
     % poetry publish            // PyPI에 배포
 
