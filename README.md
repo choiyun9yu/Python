@@ -16,6 +16,12 @@ pip는 파이썬에 기본적으로 내장되어 있는 패키지 매니저이�
 ## 2. Virtual Environment, 가상 환경
 ### 2-1. Poetry
 
+#### PyCharm 이 자동으로 가상환경을 찾지 못한 경우 
+> [File] -> [Settings]
+> 검색: "Interpreter"
+> [Project Interpreter] -> [Add New Interpreter] -> [Poetry Environment]
+> [Install packages from pyproejct.toml] -> [OK]
+
 #### Install
     % curl -sSL https://install.python-poetry.org | python3 -
     % echo 'export PATH="/home/{사용자이름}/.local/bin:$PATH"' >> ~/.zprofile
